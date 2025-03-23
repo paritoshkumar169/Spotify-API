@@ -1,129 +1,199 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css");
-
-/* General Styles */
-body,
-html {
+* {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+  overflow-x: hidden;
 }
 
 .app-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-}
-
-#root {
-  width: 100%;
-}
-
-/* Header */
-.title {
-  font-size: 2.5rem;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.9));
+  color: #FFFFFF;
+  transition: background 0.3s ease-in-out;
 }
 
-.logo {
-  font-size: 3rem;
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20px;
 }
 
-/* Search Bar */
+.app-header {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #1DB954;
+  text-shadow: 0px 0px 20px rgba(29, 185, 84, 0.7);
+  transition: transform 0.3s ease-in-out;
+}
+
+.app-header:hover {
+  transform: scale(1.1);
+}
+
 .search-container {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
+  max-width: 500px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease-in-out;
 }
 
-.search-bar {
-  display: flex;
-}
-
-.search-button {
-  background-color: #1DB954;
+.search-input {
+  width: 70%;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 5px;
   border: none;
-  color: white;
+  background-color: #111;
+  color: #FFFFFF;
+  outline: none;
+  transition: transform 0.3s ease-in-out;
 }
 
-.search-button:hover {
-  background-color: #17a74a;
-}
-
-/* Suggestions */
-.suggestion-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.suggestion-card {
-  background: #282828;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-  width: 120px;
-}
-
-.suggestion-card:hover {
+.search-input:focus {
+  border: 1px solid #1DB954;
   transform: scale(1.05);
 }
 
-.suggestion-image {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
+.search-button {
+  padding: 14px 20px;
+  margin-left: 12px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #1DB954, #19a859);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.placeholder-image {
-  width: 100%;
-  height: 100px;
-  background-color: #444;
-  border-radius: 5px;
+.search-button:hover {
+  background: linear-gradient(135deg, #168a41, #15a74a);
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(29, 185, 84, 0.8);
 }
 
-/* Album Grid */
 .album-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  margin-top: 25px;
+  width: 90%;
+  max-width: 1200px;
 }
 
 .album-card {
-  background: #282828;
-  border: none;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 200px;
+  margin: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 18px;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+
+.album-card:hover {
+  transform: scale(1.12);
+  box-shadow: 0px 6px 24px rgba(255, 255, 255, 0.2);
 }
 
 .album-card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.album-card .card-body {
-  text-align: center;
+.album-card:hover img {
+  transform: scale(1.05);
 }
 
-.album-card .album-button {
-  background-color: #1DB954;
-  border: none;
-  color: white;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
 }
 
-.album-card .album-button:hover {
-  background-color: #17a74a;
+.album-card:nth-child(odd) {
+  animation: float 3s infinite ease-in-out;
+}
+
+.album-card:nth-child(even) {
+  animation: float 4s infinite ease-in-out;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1DB954;
+  border-radius: 10px;
+}
+
+.loader {
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid #1DB954;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-top: 30px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    font-size: 2rem;
+  }
+
+  .search-container {
+    max-width: 90%;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+  }
+
+  .search-button {
+    padding: 10px 15px;
+  }
+
+  .album-card {
+    width: 90%;
+    margin: 10px auto;
+  }
 }
